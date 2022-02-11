@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const { captureRejections } = require('events');
 require('dotenv').config();
 const cors = require('cors')
-app.use(cors)
+app.use(cors())
 // const mongoose = require('mongoose');
 
 // connect database
@@ -30,6 +30,7 @@ try{
      app.get('/',(req,res)=>{   
 
         res.send('Respond With a Resource')
+        console.log('success')
     })
 
 
