@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const { captureRejections } = require('events');
 require('dotenv').config();
+const cors = require('cors')
+app.use(cors)
 // const mongoose = require('mongoose');
 
 // connect database
@@ -24,11 +26,13 @@ const setHomeRoute = ()=>{
 // try catch error handling
 
 try{
-
+// home route
      app.get('/',(req,res)=>{   
-         
-        res.send('hello world')
+
+        res.send('Respond With a Resource')
     })
+
+
 
 }
 
