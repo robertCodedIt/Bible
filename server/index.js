@@ -5,19 +5,20 @@ const { captureRejections } = require('events');
 require('dotenv').config();
 const cors = require('cors')
 app.use(cors())
-// const mongoose = require('mongoose');
+
+const mongoose = require('mongoose');
 
 // connect database
 
-// mongoose.connect("mongodb://localhost:27017/testdb", {
-//   useNewUrlParser: "true",
-// })
-// mongoose.connection.on("error", err => {
-//   console.log("err", err)
-// })
-// mongoose.connection.on("connected", (err, res) => {
-//   console.log("mongoose is connected")
-// })
+mongoose.connect("mongodb+srv://gold:SARIVIA9@cluster0.eplls.mongodb.net/myFirstDatabase?", {
+  useNewUrlParser: "true",
+})
+mongoose.connection.on("error", err => {
+  console.log("err", err)
+})
+mongoose.connection.on("connected", (err, res) => {
+  console.log("mongoose is connected")
+})
 
 
 // some default API routes
