@@ -3,14 +3,16 @@ const app = express();
 const bodyParser = require("body-parser");
 const { captureRejections } = require('events');
 require('dotenv').config();
+// don't forget to use cors()
 const cors = require('cors')
 app.use(cors())
 
-const mongoose = require('mongoose');
+
 
 // connect database
+const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://gold:SARIVIA9@cluster0.eplls.mongodb.net/myFirstDatabase?", {
+mongoose.connect("mongodb+srv://gold:SARIVIA9@cluster0.eplls.mongodb.net/bibleDataBase?retryWrites=true&w=majority", {
   useNewUrlParser: "true",
 })
 mongoose.connection.on("error", err => {
