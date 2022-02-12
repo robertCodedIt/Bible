@@ -11,8 +11,8 @@ app.use(cors())
 
 // connect database
 const mongoose = require('mongoose');
-
-mongoose.connect("mongodb+srv://gold:SARIVIA9@cluster0.eplls.mongodb.net/bibleDataBase?retryWrites=true&w=majority", {
+const connection = process.env.DATABASE_CONNECTION_STRING;
+mongoose.connect(connection, {
   useNewUrlParser: "true",
 })
 mongoose.connection.on("error", err => {
