@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-    "title":'String',
-    "author":'String',
-    "numberOfChapters":'Integer',
+    "id":"Number",
+    "name":'String',
+    "testament":'String',
+    "genre":{"id":"Number","name":"String"}
 
 })
 
