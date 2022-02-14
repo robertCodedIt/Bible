@@ -47,7 +47,7 @@ try{
 // home route
      app.get('/',(req,res)=>{   
 
-        res.send('Respond With a Resource')
+        res.send(myData)
         console.log('success')
 
     })
@@ -71,7 +71,7 @@ const port = process.env.PORT
 
 
 
-// setHomeRoute()
+setHomeRoute()
 // listen on the port number
 app.listen(port,()=>{console.log( ` Listening for requests on port: ${port}`)})
 

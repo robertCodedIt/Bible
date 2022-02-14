@@ -1,4 +1,5 @@
 import BibleHeader from "../layout/BibleHeader";
+import Footer from "../layout/Footer";
 
 
 
@@ -13,6 +14,7 @@ export default function Bible() {
     <>
       <div className="App">
         <BibleHeader sendIt = {()=>{hitApi()}}/>
+        <Footer/>
       </div>
     </>
   );
