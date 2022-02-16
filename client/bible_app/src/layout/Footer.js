@@ -4,8 +4,8 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
     <div className="container-fluid text-center text-md-left">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
-                <h5 className="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
+                <h5 className="text-uppercase">Your Verse </h5>
+                <p>"For God do loved the world that He gave His only begotten Son, that whosoever shall believe in Him shall not die but have everlastung Life.  - John 3:16"</p>
             </div>
 
             <hr className="clearfix w-100 d-md-none pb-0"/>

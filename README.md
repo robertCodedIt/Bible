@@ -1,5 +1,5 @@
 # Purpose
-"As a reader of the bible, I want to be able to navigate to a specifiic book within the bible so that I can save time. 
+"As a reader of the bible, I want to be able to navigate to a specific book within the bible so that I can save time. 
 
 As a reader of the bible, I want to be able to bookmark so that I can easily return to certain parts of the text. 
 

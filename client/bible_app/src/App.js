@@ -1,33 +1,37 @@
-
-import './App.css';
-// import axios  from 'axios'
-import Bible from './renderApp/Bible'
-
+import NavigationBar from "./components/NavigationBar";
+import Footer from "./layout/Footer";
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom';
 
 
 
-// hit the API
 
-function App() {
-  // async function HitApi(){
-  
 
-  //   // store the results in a variable
-    
-  //   axios.get('http://localhost:3001')
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  
 
-  // }
-  
+// this functional component will render the app
+export default function App() {
   return (
-    <Bible/>
+    <Router>
+      <NavigationBar/>
+      <Routes>
+      <Route path='/' element = {<Layout/>}/ >
+      <Route path = '/footer' element = {<Footer/>}/ >
+    </Routes>
+    </Router>
+
   );
 }
-
-export default App;
+function Layout() {
+  return (
+    <div>
+      
+      
+      <nav>
+        <Link to="invoices">Invoices</Link> |{" "}
+        <Link to="dashboard">Dashboard</Link>
+      </nav>
+      <div className="content">
+        <Outlet />
+      </div>
+    </div>
+  );
+}

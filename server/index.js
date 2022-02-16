@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const { captureRejections } = require('events');
 require('dotenv').config();
+const Book = require('./models/Book')
 // don't forget to use cors()
 const cors = require('cors')
 app.use(cors())
@@ -12,7 +13,6 @@ const axios = require('axios');
 
 // connect database
 const mongoose = require('mongoose');
-const e = require('express');
 const connection = process.env.DATABASE_CONNECTION_STRING;
 mongoose.connect(connection, {
   useNewUrlParser: "true",
@@ -26,39 +26,37 @@ mongoose.connection.on("connected", (err, res) => {
 
 
 // some default API routes
+try{app.get('/books',(req,res)=>{Book.find().then(result=>res.send(result))})}
+catch(err){console.log(err)}
+try{app.get('/search/:term',async(req,res)=>{
+  
+    await axios.get(`https://bible-go-api.rkeplin.com/v1/search?query=${req.params.term}`)
+    .then((response)=>{
+      let myList = []
+      for(let i = 0; i<10;i++){
+        myList.push(response.data.items[i])
+      }
+      res.send(myList)})
+    .catch(err=>console.log(err))
+  
+})}
+catch(err){console.log(err)}
 
-const setHomeRoute = async ()=>{
+const setHomeRoute =  ()=>{
 // try catch error handling
-let myData;
+
 try{
 
-  // make a call to the Bible API 
-  await axios.get('https://bible-go-api.rkeplin.com/v1/books')
-  .then(function (response) {
-    // console.log(response.data)
-    myData = response.data.map(el=>{return{id:el.id,name:el.name,testament:el.testament,genre:el.genre}})
-    // now I want to save the books to the database model
-
-    console.log(myData)
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-// home route
-     app.get('/',(req,res)=>{   
-
-        res.send(myData)
+    app.get('/:book/:chapter/:verse', async (req,response)=>{   
+      await axios.get(`https://labs.bible.org/api/?passage=${req.params.book}+${req.params.chapter}:${req.params.verse}&type=json`).then((res)=>{response.send(res.data)}).catch(err=>console.log(err))
+  
+        
         console.log('success')
 
     })
-
-
-
 }
-
 catch(err){
 console.log(err)
-
 }
 finally{
     console.log('done')
