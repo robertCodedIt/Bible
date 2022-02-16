@@ -33,10 +33,13 @@ try{app.get('/search/:term',async(req,res)=>{
     await axios.get(`https://bible-go-api.rkeplin.com/v1/search?query=${req.params.term}`)
     .then((response)=>{
       let myList = []
-      for(let i = 0; i<10;i++){
+      let myNum = Math.floor(Math.random() * response.data.items.length) + 1
+      for(let i = myNum; i<response.data.items.length;i++){
         myList.push(response.data.items[i])
+        break
       }
-      res.send(myList)})
+      res.send(myList)
+    console.log(myList)})
     .catch(err=>console.log(err))
   
 })}

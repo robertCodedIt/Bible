@@ -1,6 +1,7 @@
 import NavigationBar from "./components/NavigationBar";
+import Bible from "./renderApp/Bible";
 import Footer from "./layout/Footer";
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,  } from 'react-router-dom';
 
 
 
@@ -8,30 +9,16 @@ import { BrowserRouter as Router, Routes, Route, Link, Outlet } from 'react-rout
 
 
 // this functional component will render the app
-export default function App() {
+export default function App(props) {
   return (
     <Router>
-      <NavigationBar/>
+      <NavigationBar />
       <Routes>
-      <Route path='/' element = {<Layout/>}/ >
-      <Route path = '/footer' element = {<Footer/>}/ >
+     
+      <Route path = '/' element = {<Bible />}/ >
     </Routes>
+    <Footer/>
     </Router>
 
-  );
-}
-function Layout() {
-  return (
-    <div>
-      
-      
-      <nav>
-        <Link to="invoices">Invoices</Link> |{" "}
-        <Link to="dashboard">Dashboard</Link>
-      </nav>
-      <div className="content">
-        <Outlet />
-      </div>
-    </div>
   );
 }
