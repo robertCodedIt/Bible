@@ -5,9 +5,10 @@ export default class Verse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            searchTerm:'Holy',
+            searchTerm:'Forgiveness',
             bookName:"",
             chapter:0,
+            verseNumber:0,
             verse:''
         }
 
@@ -15,7 +16,13 @@ export default class Verse extends React.Component {
 apiTry = async(term)=>{
     try{
          await axios.get(`http://localhost:3001/search/${term}`)
-         .then(res=>{this.setState({verse:res.data[0].verse})
+         .then(res=>{this.setState({
+             verseNumber:res.data[0].verseId,
+             verse:res.data[0].verse,
+             chapter:res.data[0].chapterId,
+             bookName:res.data[0].book.name,
+
+            })
          let verse = this.state.verse;
          var temp = document.createElement("div");
          temp.innerHTML = verse;
@@ -31,7 +38,8 @@ this.apiTry(this.state.searchTerm)
 
     render(){
         return(
-            <>{this.state.verse}</>
+            <>{this.state.verse}
+            <h6>{this.state.bookName} {this.state.chapter}:{this.state.verseNumber}</h6></>
         )
     }
 

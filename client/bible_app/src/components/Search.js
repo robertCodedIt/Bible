@@ -15,14 +15,14 @@ render(){
     return(
 
         <>
-        <input placeholder = "search the bible" onChange ={this.handleChange} /
+        <input style = {{margin:'12px'}} placeholder = "search the bible" onChange ={this.handleChange} />
         
-        >
-        <Button onClick = {()=>{
+        
+        <Button style = {{margin:'12px',width:'auto'}} onClick = {()=>{
             this.sendApi()
             }}>
             Search
-        </Button >
+        </Button  >
         </>
     )
 }
