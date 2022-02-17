@@ -13,6 +13,7 @@ export default function App(props) {
   return (
     <Router>
       <NavigationBar />
+     
       <Routes>
      
       <Route path = '/' element = {<Bible />}/ >

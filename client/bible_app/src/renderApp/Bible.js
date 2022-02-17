@@ -1,8 +1,10 @@
 import  {Card,
   // Button
 }  from 'react-bootstrap';
+import Verse from '../components/Verse.js'
 import {useState,useEffect} from 'react';
 import axios from 'axios';
+import CommentBox from '../components/CommentBox';
 // import {useState} from 'react'
 export default function Bible(props){
 const [verses,setVerses] = useState([]);
@@ -27,24 +29,33 @@ placeImage(res.config.url)
 
 }
     return(
-        <div className = 'App'>
-
+        <div >
+        <div style={{display:'grid', placeItems:'center'}}> <h2>Welcome To Your Verse</h2>
+      <h3>Your Bible Study Needs Here</h3>    
+       <Verse/>
+       </div>
+      
+ 
+      <hr/>
 {verses.map((el)=>{
 
     return(
-        <Card key = {el.id} style={{ width: '18rem' }}>
+      <div key = {el.id}>
+
+        <h2>Your Verse</h2>
+        <Card  style={{ width: '18rem' }}>
         <Card.Img variant="top" src={image} />
         <Card.Body>
-          <Card.Title>Your Verse - 
+          <Card.Title>
               {el.book.name} {el.chapterId}:{el.verseId}
           </Card.Title>
           <Card.Text>
-            <div>{el.verse}</div> 
+            <Verse/>
           </Card.Text>
-          
+          <CommentBox/>
         </Card.Body>
       </Card>
-
+</div>
 
 
     )

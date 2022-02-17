@@ -35,8 +35,12 @@ try{app.get('/search/:term',async(req,res)=>{
       let myList = []
       let myNum = Math.floor(Math.random() * response.data.items.length) + 1
       for(let i = myNum; i<response.data.items.length;i++){
+
         myList.push(response.data.items[i])
-        break
+        if (myList.length === 5 ){
+          break
+        }
+       
       }
       res.send(myList)
     console.log(myList)})
