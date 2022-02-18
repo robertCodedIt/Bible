@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios'
+import { Api_url } from './key/api_url';
+
+
 export default class Verse extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = { 
-            searchTerm:'Forgiveness',
+            searchTerm:'Father',
             bookName:"",
             chapter:0,
             verseNumber:0,
@@ -15,7 +18,11 @@ export default class Verse extends React.Component {
     }
 apiTry = async(term)=>{
     try{
-         await axios.get(`http://localhost:3001/search/${term}`)
+        // const url = process.env.REACT_APP_SERVER;
+        console.log(Api_url)
+       // TODO find out how to set the url string in react .env
+       //
+         await axios.get(`${Api_url}/search/${term}`)
          .then(res=>{this.setState({
              verseNumber:res.data[0].verseId,
              verse:res.data[0].verse,
@@ -39,7 +46,10 @@ this.apiTry(this.state.searchTerm)
     render(){
         return(
             <>{this.state.verse}
-            <h6>{this.state.bookName} {this.state.chapter}:{this.state.verseNumber}</h6></>
+            <span
+            // block style
+            id = "verseSpan">{this.state.bookName} {this.state.chapter}:{this.state.verseNumber}</span>
+            </>
         )
     }
 

@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const { captureRejections } = require('events');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 require('dotenv').config();
 const Book = require('./models/Book')
+const Comment = require('./models/Comment')
 // don't forget to use cors()
 const cors = require('cors')
 app.use(cors())
@@ -26,7 +29,17 @@ mongoose.connection.on("connected", (err, res) => {
 
 
 // some default API routes
+
+try{
+  app.post('/comments',async (req,res)=>{
+    const {user,text} = req.body;
+    const comment = new Comment({user,text});
+    const savedComment = await comment.save();
+    res.json(savedComment)
+  })
+}catch(err){console.log(err)}
 try{app.get('/books',(req,res)=>{Book.find().then(result=>res.send(result))})}
+
 catch(err){console.log(err)}
 try{app.get('/search/:term',async(req,res)=>{
   

@@ -37,17 +37,12 @@ placeImage(res.config.url)
       
  
       <hr/>
-{verses.map((el)=>{
-
-    return(
-      <div key = {el.id}>
-
-        <h2>Your Verse</h2>
-        <Card  style={{ width: '18rem' }}>
+      <div style = {{display:'flex', flex:1,justifyContent: 'center'}}>
+      <Card  style={{ width: '18rem' }}>
         <Card.Img variant="top" src={image} />
         <Card.Body>
           <Card.Title>
-              {el.book.name} {el.chapterId}:{el.verseId}
+          Your Verse
           </Card.Title>
           <Card.Text>
             <Verse/>
@@ -56,11 +51,6 @@ placeImage(res.config.url)
         </Card.Body>
       </Card>
 </div>
-
-
-    )
-})}
-
 
       
         </div>
