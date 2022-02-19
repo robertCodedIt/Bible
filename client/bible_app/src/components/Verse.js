@@ -8,7 +8,7 @@ export default class Verse extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            searchTerm:'Father',
+            searchTerm:'Love',
             bookName:"",
             chapter:0,
             verseNumber:0,
