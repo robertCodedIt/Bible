@@ -1,43 +1,43 @@
-import React, { Component } from 'react'
-import {Key} from './key/Key'
-import {Editor} from "@tinymce/tinymce-react";
-import {Api_url} from '../key/Api_url'
-export default class CommentBox extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = { content:" "};
+import React from 'react';
+import {
+  MDBInput,
+  MDBBtn,
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  MDBValidation,
+  
+} from 'mdb-react-ui-kit';
 
-  handleChange(event) {
-    this.setState({ content: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("Text was submitted: " + this.state.content);
-    event.preventDefault();
-    // TODO access react .env for localhost string
-    
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        Comment: {this.state.content}
-        <Editor
-        autoResize = {true}
-        apiKey = {Key}
-          rows="10"
-          cols="30"
-          value={this.state.content}
-          onEditorChange={this.handleChange}
+export default function CommentBox() {
+  return (
+    <MDBValidation isValidated>
+      <div className='mb-3 pb-1'>
+        <MDBInput
+          label='Comment'
+          id='validationTextarea'
+          textarea
+          placeholder='comment if you like'
+          required
+          validation=''
+          invalid
         />
-        <br />
-        <input type="submit" value="Comment" />
-      </form>
-    )
-  }
+      </div>
+      <div><MDBInput
+        type="textarea"
+        label="Please Leave Your Name"
+        rows="1"
+        icon="user"
+        required
+    
+      
+       /></div>
+ 
+
+   
+      <div>
+        <MDBBtn type='submit' disabled>
+          Comment
+        </MDBBtn>
+      </div>
+    </MDBValidation>
+  );
 }

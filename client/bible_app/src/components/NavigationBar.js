@@ -11,7 +11,7 @@ return (
 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 <Navbar.Collapse id="basic-navbar-nav">
 <Nav className="mr-auto">
-<Nav.Link href="#">Profile</Nav.Link>
+<Nav.Link href="/forum">Forum</Nav.Link>
 <Nav.Link href="/">Home</Nav.Link>
 </Nav>
 <Search/>

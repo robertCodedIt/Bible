@@ -47,7 +47,8 @@ this.apiTry(this.state.searchTerm)
         return(
             <>{this.state.verse}
             <span
-            // block style
+            // block display
+            style = {{display:'block',fontWeight:'bold'}}
             id = "verseSpan">{this.state.bookName} {this.state.chapter}:{this.state.verseNumber}</span>
             </>
         )

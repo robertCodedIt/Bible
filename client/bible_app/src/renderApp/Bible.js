@@ -18,8 +18,13 @@ const callApi = async()=>{
     .catch(err=>console.log(err))
 }
 useEffect(()=>{
-	callApi()
-  setPhoto()
+  try{
+    	callApi();
+  setPhoto();
+  }catch(err){
+    console.error(err)
+  }
+
 },[]) 
 
 async function setPhoto(){
@@ -30,8 +35,8 @@ placeImage(res.config.url)
 }
     return(
         <div >
-        <div style={{display:'grid', placeItems:'center'}}> <h2>Welcome To Your Verse</h2>
-      <h3>Your Bible Study Needs Here</h3>    
+        <div style={{display:'grid', placeItems:'center'}}> <h2>Welcome To The Open Bible Forum</h2>
+      <h4>Read And Discuss the Word</h4>    
        <Verse/>
        </div>
       
@@ -42,7 +47,7 @@ placeImage(res.config.url)
         <Card.Img variant="top" src={image} />
         <Card.Body>
           <Card.Title>
-          Your Verse
+     For You
           </Card.Title>
           <Card.Text>
             <Verse/>
