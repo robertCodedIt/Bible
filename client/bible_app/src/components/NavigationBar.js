@@ -15,6 +15,7 @@ return (
 <Nav.Link href="/">Home</Nav.Link>
 </Nav>
 <Search/>
+
 </Navbar.Collapse>
 </Navbar>
 );

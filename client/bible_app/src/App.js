@@ -11,13 +11,14 @@ import Forum from "./components/Forum";
 
 // this functional component will render the app
 export default function App(props) {
+  
   return (
     <Router>
       <NavigationBar />
      
       <Routes>
      
-      <Route path = '/' element = {<Bible />}/ >
+      <Route path = '/' element = {<Bible/>}/ >
       <Route path = '/forum' element = {<Forum />}/ >
     </Routes>
     <Footer/>

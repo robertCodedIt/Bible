@@ -4,14 +4,18 @@ import {Button} from 'react-bootstrap';
 
 
 export default class Search extends React.Component{
-constructor(props){
-    super(props);
+constructor(){
+    super();
     this.state = {
 query:'',
 result:[],
     }
 }
+
 render(){
+    
+    console.log(this.props)
+    // this.props.resultsArray = this.state.result
     return(
 
         <>
@@ -34,9 +38,13 @@ async sendApi(){
        this.setState({result:res.data})
        console.log(this.state.result)
        this.setState({query:" "})
+       
+       console.log(this.props)
+    //    this.props.results = this.state.result;
     }
        )
    .catch(err=>console.error(err))
+  
 }
 
 }
