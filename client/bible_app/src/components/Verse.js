@@ -9,7 +9,7 @@ export default class Verse extends React.Component {
         super(props);
         this.state = { 
             
-            searchTerm:'Love',
+            searchTerm:'faith',
             bookName:"",
             chapter:0,
             verseNumber:0,
@@ -17,10 +17,11 @@ export default class Verse extends React.Component {
         }
 
     }
+   
+
 apiTry = async(term)=>{
     try{
-        // const url = process.env.REACT_APP_SERVER;
-        console.log(Api_url)
+        // const url = process.env.REACT_APP_SERVER
        // TODO find out how to set the url string in react .env
        //
          await axios.get(`${Api_url}/search/${term}`)

@@ -14,8 +14,7 @@ result:[],
 
 render(){
     
-    console.log(this.props)
-    // this.props.resultsArray = this.state.result
+
     return(
 
         <>

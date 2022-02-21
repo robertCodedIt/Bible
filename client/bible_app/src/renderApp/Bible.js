@@ -7,21 +7,13 @@ import axios from 'axios';
 import CommentBox from '../components/CommentBox';
 // import {useState} from 'react'
 export default function Bible(props){
-const [verses,setVerses] = useState([]);
 const [image,placeImage] = useState('')
 
-
-const callApi = async()=>{
-    await axios.get(`http://localhost:3001/search/christ`)
-    .then((response)=>{setVerses(response.data)
-       console.log(verses)})
-    .catch(err=>console.log(err))
-}
 useEffect(()=>{
   try{
-    	callApi();
   setPhoto();
-  }catch(err){
+  }
+  catch(err){
     console.error(err)
   }
 

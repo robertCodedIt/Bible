@@ -1,13 +1,13 @@
-// import React,{useState} from 'react';
+
 import { Navbar, Nav, } from 'react-bootstrap';
 import Search from './Search'
-// import { LinkContainer } from 'react-router-dom';
+
 function NavigationBar(props) {
-// const [search,setSearch] = useState('');
+
 
 return (
 <Navbar bg="dark" expand="lg" variant="dark">
-<Navbar.Brand href="/">Your Verse</Navbar.Brand>
+<Navbar.Brand href="/">Open Bible Forum</Navbar.Brand>
 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 <Navbar.Collapse id="basic-navbar-nav">
 <Nav className="mr-auto">
