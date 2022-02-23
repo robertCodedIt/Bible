@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 const cors = require('cors')
 app.use(cors())
 
-
+const DATABASE_CONNECTION_STRING = require('./keys/connect')
 // connect database
 const mongoose = require('mongoose');
-const connection = process.env.DATABASE_CONNECTION_STRING;
+const connection = process.env.DATABASE_CONNECTION_STRING || DATABASE_CONNECTION_STRING;
 mongoose.connect(connection, {
   useNewUrlParser: "true",
 })
@@ -96,7 +96,7 @@ const setHomeRoute = () => {
 }
 
 // set the port number
-const port = process.env.PORT
+const port = process.env.PORT || 3001;
 
 
 
@@ -105,4 +105,4 @@ setHomeRoute()
 // listen on the port number
 
 
-app.listen(port, () => { console.log(` Listening for requests on port: ${port}`) })
+app.listen(port , () => { console.log(` Listening for requests on port: ${port}`) })

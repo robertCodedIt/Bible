@@ -1,21 +1,11 @@
 
 import React from 'react';
-// import ForumContent from './ForumContent'
-// import {
-//   MDBNavbar,
-//   MDBNavbarNav,
-//   MDBNavbarItem,
-//   MDBNavbarToggler,
-//   MDBNavbarLink,
-//   MDBContainer,
-//   MDBIcon
-// } from 'mdb-react-ui-kit';
-
+import ForumComment from './ForumComment'
 export default function Forum() {
   return (
       <>
 
-    <header>
+    <header style = {{marginBottom:'1rem'}}>
       
 
       <div
@@ -28,12 +18,21 @@ export default function Forum() {
             <div className='text-white'>
               <h1 className='mb-3' style={{margin:'1rem'}}>Welcome to the Forum</h1>
               <h5 className='mb-4' >See what others think!</h5>
-              
             </div>
           </div>
         </div>
       </div>
     </header>
+    <div style={{display:'flex',flex:1}}>
+      <ForumComment title = "Joshua"/>
+      <ForumComment title = "Maria"/>
+      <ForumComment title = "Robert"/>
+      <ForumComment title = "TJ"/>
+      <ForumComment title = "Anon User"/>
+ 
+      
+      </div>
+
     {/* <ForumContent/> */}
     </>
   );

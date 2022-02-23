@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { Api_url } from './key/api_url';
+import { Api_url } from './key/Api_url';
 
 
 export default class Verse extends React.Component {

@@ -1,41 +1,63 @@
-import {useState} from 'react'
-import { Button,Modal } from 'react-bootstrap'
+import React, { useState } from 'react';
+import {
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  // MDBPopover,
+  // MDBPopoverHeader,
+  // MDBPopoverBody,
+  MDBTooltip
+} from 'mdb-react-ui-kit';
 
+export default function SearchModal(props) {
+  const [popoverModal, setPopoverModal] = useState(false);
 
+  const toggleShow = () => setPopoverModal(!popoverModal);
+ console.log(props)
+  return (
+   
+    <>
+      <MDBBtn onClick={toggleShow}>See Results</MDBBtn>
 
-export default function SearchModal(){
-    const [show, setShow] = useState(false);
-    // const [search, setSearch] = useState('')
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
-    return (
-      <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch static backdrop modal
-        </Button>
-  
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            I will not close if you click outside me. Don't even try to press
-            escape key.
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Understood</Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
-  
+      <MDBModal tabIndex='-1' show={popoverModal} setShow={setPopoverModal}>
+        <MDBModalDialog>
+          <MDBModalContent>
+            <MDBModalHeader>
+              <MDBModalTitle> <h5>Results from your search</h5></MDBModalTitle>
+              <MDBBtn className='btn-close' color='none' onClick={()=>{
+                toggleShow();
+              }}></MDBBtn>
+            </MDBModalHeader>
+            <MDBModalBody>
+              
+
+              {props.res.map((el)=>{
+              let verse = el.verse;
+              let temp = document.createElement('div');
+              temp.innerHTML = verse
+              let sanitized = temp.textContent || temp.innerText;
+
+              return(
+              <p key = {el.id}><MDBTooltip tag='a' wrapperProps={{ href: '#!' }} title={sanitized}>
+                  {el.book.name} {el.chapterId}:{el.verseId}
+                </MDBTooltip>{' '}</p>)
+              })}
+            </MDBModalBody>
+
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={toggleShow}>
+                Close
+              </MDBBtn>
+              
+            </MDBModalFooter>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
+    </>
+  );
+}
